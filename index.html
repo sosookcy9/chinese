@@ -7,64 +7,48 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; background: #f5f5f5; max-width: 480px; margin: 0 auto; min-height: 100vh; }
-
-  /* Header */
   .header { background: #2c3e50; color: white; padding: 20px 18px 16px; text-align: center; }
   .header .sub { font-size: 12px; color: #aaa; margin-bottom: 4px; }
   .header h1 { font-size: 20px; font-weight: bold; }
-
-  /* Tabs */
   .tabs { display: flex; background: white; border-bottom: 2px solid #eee; }
   .tab { flex: 1; padding: 13px 0; border: none; background: none; font-size: 14px; font-weight: bold; cursor: pointer; color: #888; border-bottom: 3px solid transparent; font-family: inherit; }
   .tab.active { color: #e74c3c; border-bottom: 3px solid #e74c3c; }
-
-  /* Pages */
   .page { display: none; padding: 14px 14px 60px; }
   .page.active { display: block; }
   .page-hint { font-size: 12px; color: #888; text-align: center; margin-bottom: 12px; }
-
-  /* Accordion */
   .accordion { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 12px; }
   .acc-header { width: 100%; color: white; border: none; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 15px; font-weight: bold; font-family: inherit; text-align: left; }
   .acc-arrow { font-size: 18px; transition: transform 0.2s; }
   .acc-arrow.open { transform: rotate(180deg); }
   .acc-body { display: none; padding: 14px 16px; }
   .acc-body.open { display: block; }
-
-  /* Content blocks */
-  .explain { background: #fffde7; border-left: 4px solid #f39c12; border-radius: 8px; padding: 12px 14px; font-size: 14px; line-height: 1.9; color: #444; margin-bottom: 10px; white-space: pre-line; }
+  .explain { background: #fffde7; border-left: 4px solid #f39c12; border-radius: 8px; padding: 12px 14px; font-size: 14px; line-height: 1.9; color: #444; margin-bottom: 10px; }
   .tip { background: #e8f8f5; border-left: 4px solid #27ae60; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #1e8449; margin-bottom: 10px; }
-  .warn { background: #fdecea; border-left: 4px solid #e74c3c; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #c0392b; font-weight: bold; margin-bottom: 10px; white-space: pre-line; }
+  .warn { background: #fdecea; border-left: 4px solid #e74c3c; border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #c0392b; font-weight: bold; margin-bottom: 10px; }
   .quote { background: #f0f0f0; border-left: 3px solid #ccc; padding: 8px 10px; font-size: 12px; color: #666; line-height: 1.9; margin-bottom: 10px; border-radius: 4px; }
   .card { background: #f8f9fa; border-radius: 10px; padding: 10px 14px; margin-bottom: 8px; }
   .card-label { font-weight: bold; font-size: 13px; color: #555; margin-bottom: 4px; }
   .card-text { font-size: 13px; color: #444; line-height: 1.8; white-space: pre-line; }
-
-  /* Tables */
   table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 10px; }
   th { background: #555; color: white; padding: 8px 10px; text-align: center; }
-  td { padding: 8px 10px; border: 1px solid #eee; vertical-align: top; line-height: 1.7; white-space: pre-line; }
+  td { padding: 8px 10px; border: 1px solid #eee; vertical-align: top; line-height: 1.7; }
   tr:nth-child(odd) td { background: white; }
   tr:nth-child(even) td { background: #f9f9f9; }
-  td.ans { font-weight: bold; color: #c0392b; text-align: center; }
-  td.lbl { font-weight: bold; color: #555; background: #f4f6f9 !important; text-align: center; }
-
-  /* Compare */
+  td.ans { font-weight: bold; color: #c0392b; text-align: center; white-space: nowrap; }
+  td.hint { font-size: 11px; color: #888; }
   .compare-row { background: #f8f9fa; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; }
   .compare-label { font-weight: bold; font-size: 12px; color: #888; margin-bottom: 6px; }
   .compare-cells { display: flex; gap: 8px; }
-  .compare-left { flex: 1; background: #eafaf1; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #1e8449; line-height: 1.7; white-space: pre-line; }
-  .compare-right { flex: 1; background: #eaf4fb; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #1a5276; line-height: 1.7; white-space: pre-line; }
-
-  /* Quiz */
+  .compare-left { flex: 1; background: #eafaf1; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #1e8449; line-height: 1.7; }
+  .compare-right { flex: 1; background: #eaf4fb; border-radius: 8px; padding: 8px 10px; font-size: 13px; color: #1a5276; line-height: 1.7; }
   .quiz-box { background: white; border-radius: 14px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
   .quiz-meta { display: flex; justify-content: space-between; font-size: 13px; color: #888; margin-bottom: 12px; }
   .quiz-score { color: #27ae60; font-weight: bold; }
   .progress-bar { background: #eee; border-radius: 10px; height: 6px; margin-bottom: 16px; }
   .progress-fill { background: #e74c3c; border-radius: 10px; height: 6px; transition: width 0.3s; }
-  .quiz-q { font-size: 16px; font-weight: bold; line-height: 1.6; margin-bottom: 16px; color: #2c3e50; }
+  .quiz-q { font-size: 15px; font-weight: bold; line-height: 1.7; margin-bottom: 16px; color: #2c3e50; }
   .options { display: flex; flex-direction: column; gap: 10px; }
-  .option { background: #f8f9fa; border: 2px solid #eee; border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #333; text-align: left; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+  .option { background: #f8f9fa; border: 2px solid #eee; border-radius: 10px; padding: 12px 14px; font-size: 14px; color: #333; text-align: left; cursor: pointer; font-family: inherit; transition: all 0.2s; line-height: 1.5; }
   .option.correct { background: #eafaf1; border-color: #27ae60; color: #1e8449; font-weight: bold; }
   .option.wrong { background: #fdecea; border-color: #e74c3c; color: #c0392b; }
   .option.disabled { cursor: default; }
@@ -75,7 +59,7 @@
   .result-box { text-align: center; padding: 20px 0; }
   .result-emoji { font-size: 52px; margin-bottom: 12px; }
   .result-score { font-size: 24px; font-weight: bold; margin-bottom: 8px; }
-  .result-msg { font-size: 15px; color: #555; margin-bottom: 24px; }
+  .result-msg { font-size: 15px; color: #555; margin-bottom: 24px; line-height: 1.6; }
   .restart-btn { background: #e74c3c; color: white; border: none; border-radius: 10px; padding: 13px 32px; font-size: 15px; font-weight: bold; cursor: pointer; font-family: inherit; }
 </style>
 </head>
@@ -87,24 +71,23 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" onclick="switchTab('study')">📚 複習重點</button>
-  <button class="tab" onclick="switchTab('quiz')">✏️ 練習題</button>
+  <button class="tab active" onclick="switchTab('study', this)">📚 複習重點</button>
+  <button class="tab" onclick="switchTab('quiz', this)">✏️ 練習題</button>
 </div>
 
 <!-- 複習重點 -->
 <div id="study" class="page active">
   <div class="page-hint">點選章節展開複習內容 👇</div>
 
-  <!-- Section 1 -->
   <div class="accordion">
     <button class="acc-header" style="background:#e74c3c;" onclick="toggle(this)">
       <span>一、小詩是什麼？</span><span class="acc-arrow">▾</span>
     </button>
     <div class="acc-body" style="background:#fdecea;">
-      <div class="explain">小詩就是「超短的詩」！規定很簡單，記起來：
-✅ 最多只能寫 <b>10 行</b>
-✅ 字數不能超過 <b>100 字</b>
-✅ 內容什麼都可以寫，不一定要描寫物品
+      <div class="explain">小詩就是「超短的詩」！規定很簡單，記起來：<br>
+✅ 最多只能寫 <b>10 行</b><br>
+✅ 字數不能超過 <b>100 字</b><br>
+✅ 內容什麼都可以寫，不一定要描寫物品<br>
 ✅ 雖然很短，但每一句都有很深的意思</div>
       <div class="card"><div class="card-label">小詩的感覺像什麼？</div><div class="card-text">靈感來了就寫，來不及抓就消失了，所以說小詩「神出鬼沒」。用很少的字，卻說出很多東西。</div></div>
       <div class="card"><div class="card-label">怎麼讀懂小詩？</div><div class="card-text">① 找出詩裡的重要詞
@@ -114,7 +97,6 @@
     </div>
   </div>
 
-  <!-- Section 2 -->
   <div class="accordion">
     <button class="acc-header" style="background:#e67e22;" onclick="toggle(this)">
       <span>二、重要詞語</span><span class="acc-arrow">▾</span>
@@ -128,7 +110,6 @@
     </div>
   </div>
 
-  <!-- Section 3 -->
   <div class="accordion">
     <button class="acc-header" style="background:#27ae60;" onclick="toggle(this)">
       <span>三、風箏 vs 跳水</span><span class="acc-arrow">▾</span>
@@ -138,20 +119,19 @@
       <div class="compare-row"><div class="compare-label">這首詩的感覺</div><div class="compare-cells"><div class="compare-left">🪁 文字簡短有力，充滿衝勁和鬥志</div><div class="compare-right">🏊 有畫面感，看得見顏色和動作</div></div></div>
       <div class="compare-row"><div class="compare-label">詩裡的東西代表什麼</div><div class="compare-cells"><div class="compare-left">🪁 風箏＝希望<br>天空＝外在的困難和阻力</div><div class="compare-right">🏊 湛藍的水＝想追求的理想<br>雪白水花＝努力後的成果</div></div></div>
       <div class="compare-row"><div class="compare-label">寫法</div><div class="compare-cells"><div class="compare-left">🪁 藉物抒情（用風箏說心情）</div><div class="compare-right">🏊 藉事抒懷（用跳水說感受）</div></div></div>
-
       <div class="card" style="margin-top:10px;">
-        <div class="card-label">🪁 風箏詩的詩句</div>
+        <div class="card-label">🪁 風箏詩</div>
         <div class="quote">扶搖直上，小小的希望能懸得多高呢／長長一生莫非這樣一場遊戲吧／細細一線，卻想與整座天空拔河／上去，再上去，都快看不見了／沿著河堤，我開始拉著天空奔跑。</div>
         <table>
           <tr><th>詩裡說的</th><th>其實代表</th></tr>
           <tr><td class="ans">風箏</td><td>我的希望</td></tr>
-          <tr><td class="ans">天空</td><td>現實的困難</td></tr>
+          <tr><td class="ans">天空</td><td>現實的困難和阻力</td></tr>
           <tr><td class="ans">細細一線</td><td>雖然小，但志氣很大！</td></tr>
           <tr><td class="ans">拔河</td><td>不放棄，跟困難對抗</td></tr>
         </table>
       </div>
       <div class="card">
-        <div class="card-label">🏊 跳水詩的詩句</div>
+        <div class="card-label">🏊 跳水詩</div>
         <div class="quote">從十米高臺／陶醉於下面的湛藍／在跳板與水面之間／描畫出從容的曲線／讓青春去激起／一片雪白的讚嘆。</div>
         <table>
           <tr><th>詩裡說的</th><th>其實代表</th></tr>
@@ -163,7 +143,6 @@
     </div>
   </div>
 
-  <!-- Section 4 -->
   <div class="accordion">
     <button class="acc-header" style="background:#8e44ad;" onclick="toggle(this)">
       <span>四、修辭技巧怎麼分？</span><span class="acc-arrow">▾</span>
@@ -175,12 +154,10 @@
         <tr><td class="ans">轉化</td><td>把沒有生命的東西，寫得像有生命一樣</td><td>我開始拉著天空奔跑</td></tr>
         <tr><td class="ans">象徵</td><td>用一個東西，代表另一個看不見的東西</td><td>風箏象徵希望</td></tr>
       </table>
-      <div class="warn">⚠️ 容易搞混！「拉著天空奔跑」是「轉化」不是「譬喻」！
-因為沒有用「像、如、是」，而是把天空當成真的可以被拉著跑的東西。</div>
+      <div class="warn">⚠️ 容易搞混！「拉著天空奔跑」是「轉化」不是「譬喻」！因為沒有用「像、如、是」，而是把天空當成真的可以被拉著跑的東西。</div>
     </div>
   </div>
 
-  <!-- Section 5 -->
   <div class="accordion">
     <button class="acc-header" style="background:#2980b9;" onclick="toggle(this)">
       <span>五、猜猜看！這首詩說什麼？</span><span class="acc-arrow">▾</span>
@@ -188,19 +165,18 @@
     <div class="acc-body" style="background:#eaf4fb;">
       <div class="tip">💡 先看關鍵詞，再想這個東西有什麼特徵！</div>
       <table>
-        <tr><th>答案</th><th>關鍵詩句（線索在這）</th></tr>
-        <tr><td class="ans">🦋 蝴蝶</td><td>對摺的情書／尋找花的住址<br><span style="color:#888;font-size:11px;">翅膀像對折的信、飛來飛去找花</span></td></tr>
-        <tr><td class="ans">🖊 立可白</td><td>塗掉所有錯誤／只留下隱形的疤<br><span style="color:#888;font-size:11px;">塗改液的功能，但痕跡還在</span></td></tr>
-        <tr><td class="ans">🛏 床</td><td>諾亞打造的方舟／穿梭在夢與現實的海洋<br><span style="color:#888;font-size:11px;">睡覺的地方，在夢境和現實之間</span></td></tr>
-        <tr><td class="ans">🚪 門</td><td>開，或者關／有時候是阻擋／有時候是歡迎<br><span style="color:#888;font-size:11px;">門的兩種狀態</span></td></tr>
-        <tr><td class="ans">👁 眉</td><td>兩座連綿的山巒／倚潭而生<br><span style="color:#888;font-size:11px;">眉毛的形狀像山，眼睛像潭水</span></td></tr>
-        <tr><td class="ans">🦟 蚊子</td><td>熱情頑皮的小孩／送給我一顆大紅豆<br><span style="color:#888;font-size:11px;">蚊子叮人，紅豆就是蚊子包</span></td></tr>
-        <tr><td class="ans">🍊 紅柿</td><td>等待是冬／希望是春／結果是夏<br><span style="color:#888;font-size:11px;">柿子的生長過程對應四季</span></td></tr>
+        <tr><th>答案</th><th>關鍵詩句與提示</th></tr>
+        <tr><td class="ans">🦋 蝴蝶</td><td>對摺的情書／尋找花的住址<br><span class="hint">翅膀像對折的信、飛來飛去找花</span></td></tr>
+        <tr><td class="ans">🖊 立可白</td><td>塗掉所有錯誤／只留下隱形的疤<br><span class="hint">塗改液功能，但痕跡還在</span></td></tr>
+        <tr><td class="ans">🛏 床</td><td>諾亞打造的方舟／穿梭在夢與現實的海洋<br><span class="hint">睡覺的地方，在夢境和現實之間</span></td></tr>
+        <tr><td class="ans">🚪 門</td><td>開，或者關／有時候是阻擋／有時候是歡迎<br><span class="hint">門的兩種狀態</span></td></tr>
+        <tr><td class="ans">👁 眉</td><td>兩座連綿的山巒／倚潭而生<br><span class="hint">眉毛像山，眼睛像潭水</span></td></tr>
+        <tr><td class="ans">🦟 蚊子</td><td>熱情頑皮的小孩／送給我一顆大紅豆<br><span class="hint">蚊子包就是大紅豆！</span></td></tr>
+        <tr><td class="ans">🍊 紅柿</td><td>等待是冬／希望是春／結果是夏<br><span class="hint">柿子生長過程對應四季</span></td></tr>
       </table>
     </div>
   </div>
 
-  <!-- Section 6 -->
   <div class="accordion">
     <button class="acc-header" style="background:#16a085;" onclick="toggle(this)">
       <span>六、風箏相關諺語</span><span class="acc-arrow">▾</span>
@@ -208,7 +184,7 @@
     <div class="acc-body" style="background:#e8f8f5;">
       <table>
         <tr><th>說法</th><th>意思（口語版）</th></tr>
-        <tr><td class="ans">斷了線的風箏</td><td>像斷線的風箏飛走了，再也找不到、沒有消息</td></tr>
+        <tr><td class="ans">斷了線的風箏</td><td>像斷線風箏飛走了，再也找不到、沒有消息</td></tr>
         <tr><td class="ans">裹腳布放風箏</td><td>臭名聲傳得到處都是（裹腳布很臭，飄得遠遠的）</td></tr>
         <tr><td class="ans">半空中放風箏</td><td>背後一直有人在牽線操控你</td></tr>
         <tr><td class="ans">樹林裡放風箏</td><td>被纏住了，動彈不得</td></tr>
@@ -219,22 +195,20 @@
 
 <!-- 練習題 -->
 <div id="quiz" class="page">
-  <div class="page-hint">共 10 題，選出正確答案！</div>
+  <div class="page-hint">共 20 題，選出正確答案！</div>
   <div class="quiz-box">
     <div id="quiz-content"></div>
   </div>
 </div>
 
 <script>
-  // Tab switching
-  function switchTab(tab) {
+  function switchTab(tab, btn) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById(tab).classList.add('active');
-    event.target.classList.add('active');
+    btn.classList.add('active');
   }
 
-  // Accordion
   function toggle(btn) {
     const arrow = btn.querySelector('.acc-arrow');
     const body = btn.nextElementSibling;
@@ -242,18 +216,27 @@
     body.classList.toggle('open');
   }
 
-  // Quiz data
   const QUIZ = [
-    { q: "小詩最多可以有幾行？", opts: ["五行", "十行", "二十行", "不限"], ans: 1, explain: "小詩規定最多十行，字數不超過一百字。" },
-    { q: "「扶搖直上」是什麼意思？", opts: ["慢慢往上爬", "從下面螺旋衝上去", "飛得很高很穩", "順著風飄"], ans: 1, explain: "扶搖直上就是從下面一路螺旋衝上去，像龍捲風那樣往上飛。" },
-    { q: "風箏詩裡，「天空」象徵什麼？", opts: ["廣大的未來", "外在的困難和阻力", "自由和希望", "詩人的夢想"], ans: 1, explain: "天空象徵現實的困難和阻力，而風箏才是象徵希望。" },
-    { q: "跳水詩的特色是什麼？", opts: ["語言精鍊，充滿鬥志", "有畫面感，看得見顏色和動作", "完全沒有象徵意義", "描寫比賽輸贏"], ans: 1, explain: "跳水是一首極具色彩感與動態感的小詩，藉事抒懷，層次井然。" },
-    { q: "下列哪一句是「轉化」而非「譬喻」？", opts: ["你就像天使一樣", "拉著天空奔跑", "風箏如同希望", "她美如月亮"], ans: 1, explain: "「拉著天空奔跑」沒有用「像、如、是」，而是把天空當成有生命的東西，這是轉化。" },
-    { q: "「對摺的情書／尋找花的住址」是在描寫什麼？", opts: ["蜜蜂", "蝴蝶", "郵差", "書信"], ans: 1, explain: "蝴蝶的翅膀像對折的信，飛來飛去尋找花朵，就是「尋找花的住址」。" },
-    { q: "「送給我一顆大紅豆」這句詩在說什麼？", opts: ["有人送禮物給我", "蚊子叮了我一個包", "紅豆湯很好喝", "種豆子的故事"], ans: 1, explain: "大紅豆就是被蚊子叮了之後留下的紅腫蚊子包！" },
-    { q: "「斷了線的風箏」這個諺語是什麼意思？", opts: ["做事沒有重點", "一去無音信，消失無蹤", "被人控制", "名聲很臭"], ans: 1, explain: "斷了線的風箏就會飛走找不到，比喻一個人失去聯繫、沒有消息。" },
-    { q: "「湛藍」在跳水詩裡象徵什麼？", opts: ["海洋的顏色", "想追求的理想", "選手的眼睛", "水的清澈"], ans: 1, explain: "跳水詩裡湛藍的水象徵選手想追求的理想和目標。" },
-    { q: "關於小詩，下列何者正確？", opts: ["只能寫物品", "字數限一百字以內", "篇幅在二十行以內", "一定要有押韻"], ans: 1, explain: "小詩字數以一百字為限、篇幅在十行以內，內容多元不限於詠物。" },
+    { q: "小詩最多可以有幾行？", opts: ["五行", "二十行", "十行", "不限"], ans: 2, explain: "小詩規定最多十行，字數不超過一百字。" },
+    { q: "小詩的字數有什麼規定？", opts: ["五十字以內", "兩百字以內", "沒有規定", "一百字以內"], ans: 3, explain: "小詩字數以一百字為限，篇幅在十行以內。" },
+    { q: "關於小詩的內容，下列何者正確？", opts: ["只能描寫自然景物", "一定要押韻", "內容多元，不限於詠物", "必須描寫物品"], ans: 2, explain: "小詩內容多元，不一定是詠物詩，什麼主題都可以寫。" },
+    { q: "「扶搖直上」是什麼意思？", opts: ["順著風飄", "慢慢往上爬", "飛得很高很穩", "從下面螺旋衝上去"], ans: 3, explain: "扶搖直上就是從下面一路螺旋衝上去，像龍捲風那樣往上飛。" },
+    { q: "「湛藍」是什麼意思？", opts: ["淡淡的藍色", "很深很深的藍色", "藍中帶綠的顏色", "天空的顏色"], ans: 1, explain: "湛藍就是很深很深的藍色，像深海那種藍。" },
+    { q: "風箏詩裡，「風箏」象徵什麼？", opts: ["自由自在", "希望", "現實的困難", "詩人的童年"], ans: 1, explain: "風箏象徵希望，天空才是象徵現實的困難和阻力。" },
+    { q: "風箏詩裡，「天空」象徵什麼？", opts: ["廣大的未來", "自由和希望", "外在的困難和阻力", "詩人的夢想"], ans: 2, explain: "天空象徵現實的困難和阻力，而風箏才是象徵希望。" },
+    { q: "風箏詩的主旨是什麼？", opts: ["放風箏是很開心的事", "就算渺小，也要勇敢挑戰夢想", "人生就像遊戲，不必認真", "風箏飛得越高越好"], ans: 1, explain: "風箏詩想說的是：就算我很渺小，也要勇敢挑戰比自己大的夢想！" },
+    { q: "跳水詩裡，「湛藍」象徵什麼？", opts: ["海洋的顏色", "水的清澈", "想追求的理想", "選手的眼睛"], ans: 2, explain: "跳水詩裡湛藍象徵選手想追求的理想和目標。" },
+    { q: "跳水詩的特色是什麼？", opts: ["語言精鍊，充滿鬥志", "完全沒有象徵意義", "描寫比賽輸贏", "有畫面感，看得見顏色和動作"], ans: 3, explain: "跳水是一首極具色彩感與動態感的小詩，藉事抒懷，層次井然。" },
+    { q: "下列哪一句是「譬喻」？", opts: ["拉著天空奔跑", "風箏象徵希望", "你就像天使一樣給我力量", "青春去激起讚嘆"], ans: 2, explain: "「你就像天使一樣」用了「像」來比較，這是譬喻。" },
+    { q: "「轉化」是什麼技巧？", opts: ["用「像、如、是」比較兩件事", "把沒有生命的東西寫得像有生命一樣", "用一個東西代表抽象意義", "把兩首詩合在一起"], ans: 1, explain: "轉化就是把沒有生命的東西，寫得像有生命一樣，例如「拉著天空奔跑」。" },
+    { q: "「沿著河堤，我開始拉著天空奔跑」用了什麼修辭？", opts: ["譬喻", "象徵", "轉化", "誇飾"], ans: 2, explain: "這句把天空當成可以被拉著跑的東西，是轉化，不是譬喻（沒有用像、如、是）。" },
+    { q: "「對摺的情書／尋找花的住址」在描寫什麼？", opts: ["蜜蜂", "書信", "蝴蝶", "郵差"], ans: 2, explain: "蝴蝶的翅膀像對折的信，飛來飛去尋找花朵，就是「尋找花的住址」。" },
+    { q: "「送給我一顆大紅豆」這句詩在說什麼？", opts: ["紅豆湯很好喝", "有人送禮物", "蚊子叮了我一個包", "種豆子的故事"], ans: 2, explain: "大紅豆就是被蚊子叮了之後留下的紅腫蚊子包！" },
+    { q: "「兩座連綿的山巒／倚潭而生」是在描寫什麼？", opts: ["山和湖的風景", "眉毛", "眼睛", "鼻子"], ans: 1, explain: "眉毛的形狀像連綿的山，旁邊的眼睛像潭水，所以是描寫「眉」。" },
+    { q: "「諾亞打造的方舟／穿梭在夢與現實的海洋」是在描寫什麼？", opts: ["船", "床", "搖椅", "枕頭"], ans: 1, explain: "床是睡覺的地方，睡覺時穿梭在夢境和現實之間，就像方舟在海洋上航行。" },
+    { q: "「斷了線的風箏」這個諺語是什麼意思？", opts: ["被人控制", "名聲很臭", "做事沒重點", "一去無音信，消失無蹤"], ans: 3, explain: "斷了線的風箏會飛走找不到，比喻一個人失去聯繫、沒有消息。" },
+    { q: "「裹腳布放風箏」這個諺語是什麼意思？", opts: ["臭名聲傳得到處都是", "被纏住動彈不得", "背後有人牽線", "一去無音信"], ans: 0, explain: "裹腳布很臭，放風箏飄得遠遠的，比喻臭名聲傳播得到處都是。" },
+    { q: "「樹林裡放風箏」這個諺語是什麼意思？", opts: ["被纏住了，動彈不得", "消失得無影無蹤", "背後有人在控制你", "臭名遠播"], ans: 0, explain: "在樹林裡放風箏，線會被樹枝纏住，比喻被纏住了、動彈不得。" },
   ];
 
   let current = 0, score = 0, answered = false;
@@ -273,7 +256,6 @@
         </div>`;
       return;
     }
-
     const q = QUIZ[current];
     const pct = (current / QUIZ.length * 100).toFixed(0);
     container.innerHTML = `
@@ -297,13 +279,11 @@
     const q = QUIZ[current];
     const isCorrect = i === q.ans;
     if (isCorrect) score++;
-
     document.querySelectorAll('.option').forEach((btn, idx) => {
       btn.classList.add('disabled');
       if (idx === q.ans) btn.classList.add('correct');
       else if (idx === i && !isCorrect) btn.classList.add('wrong');
     });
-
     document.getElementById('explain-area').innerHTML = `
       <div class="explain-box ${isCorrect ? 'ok' : 'ng'}">
         ${isCorrect ? '✅ 答對了！' : '❌ 答錯了！'} ${q.explain}
